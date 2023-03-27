@@ -4,6 +4,7 @@
 from search.move import random_move
 from .utils import render_board
 from search.update import update_board
+from search.spread import spread
 
 
 def search(input: dict[tuple, tuple]) -> list[tuple]:
@@ -42,9 +43,14 @@ def search(input: dict[tuple, tuple]) -> list[tuple]:
 #                     (0,5)    (1,6)    
 #                         (0,6)    
 
+    # print(input)
+    # new_board = update_board(input, (5,6), 'up')
+    # print(render_board(new_board, ansi=True))
+
     print(input)
-    new_board = update_board(input, (5,6), 'up')
-    print(render_board(new_board, ansi=True))
+    spread_board = spread(input, (5,6), 'up')
+    print(spread_board)
+    print(render_board(spread_board, ansi=True))
 
 
     # Here we're returning "hardcoded" actions for the given test.csv file.
